@@ -4,8 +4,8 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Departamentos plaza - Santo Tomé',
+  description: 'Alquiler de departamentos amoblados en Santo Tomé, Santa Fe.',
   generator: 'v0.dev',
 }
 
