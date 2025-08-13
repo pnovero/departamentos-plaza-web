@@ -34,6 +34,7 @@ export default function DepartamentosPlazaLanding() {
 
   const galleryImages = [
     { src: "/images/Frente.jpeg", alt: "Fachada del edificio Departamentos Plaza", label: "Frente" },
+    { src: "/images/A-Habitacion.jpg", alt: "Habitación - Departamento A", label: "Dpto A" },
     { src: "/images/A-Comedor.jpg", alt: "Sala de estar y comedor - Departamento A", label: "Dpto A" },
     { src: "/images/A-cocina.jpg", alt: "Comedor y sala de estar - Departamento A", label: "Dpto A" },
     { src: "/images/A-bano.jpg", alt: "Baño completo - Departamento A", label: "Dpto A" },
@@ -45,25 +46,7 @@ export default function DepartamentosPlazaLanding() {
     { src: "/images/C-bano.jpeg", alt: "Baño completo - Departamento C", label: "Dpto C" },
   ]
 
-  // Custom sort order for labels
-  const labelOrder = {
-    Frente: 1,
-    "Dpto A": 2,
-    "Dpto B": 3,
-    "Dpto C": 4,
-  }
-
-  // Sort images based on the defined order
-  galleryImages.sort((a, b) => {
-    const orderA = labelOrder[a.label as keyof typeof labelOrder] || 99 // Default to high if label not found
-    const orderB = labelOrder[b.label as keyof typeof labelOrder] || 99
-    if (orderA !== orderB) {
-      return orderA - orderB
-    }
-    // If labels are the same, maintain original relative order or sort by src
-    return a.src.localeCompare(b.src)
-  })
-
+  // Main component
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
@@ -72,8 +55,8 @@ export default function DepartamentosPlazaLanding() {
           <Image
             src="/images/Logo sin letras sin fondo.png"
             alt="Departamentos Plaza"
-            width={80} // Increased size
-            height={80} // Increased size
+            width={90} 
+            height={90} 
             className="h-16 w-auto" // Adjusted Tailwind classes for visual size
           />
           <div className="flex flex-col">
@@ -135,6 +118,40 @@ export default function DepartamentosPlazaLanding() {
       </header>
 
       <main className="flex-1">
+         {/* Photo Gallery Section */}
+        <section id="galeria" className="w-full py-10 md:py-20 lg:py-30">
+          <div className="container px-4 md:px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+                Nuestros Departamentos
+              </h2>
+              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                Espacios cómodos y modernos, completamente equipados para tu estadía.
+              </p>
+            </div>
+
+            <div className="flex overflow-x-auto whitespace-nowrap gap-6 pb-4 scrollbar-hide">
+              {galleryImages.map((image, index) => (
+                <Card
+                  key={index}
+                  className="flex-shrink-0 w-[calc(100%-24px)] sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(33.33%-16px)] overflow-hidden"
+                >
+                  <div className="relative">
+                    <Image
+                      src={image.src || "/placeholder.svg"}
+                      alt={image.alt}
+                      width={400}
+                      height={300}
+                      className="w-full h-64 object-cover"
+                    />
+                    <Badge className="absolute top-4 left-4">{image.label}</Badge>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Hero Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-orange-50 via-background to-amber-50">
           <div className="container px-4 md:px-6">
@@ -187,40 +204,6 @@ export default function DepartamentosPlazaLanding() {
           </div>
         </section>
 
-        {/* Photo Gallery Section */}
-        <section id="galeria" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
-                Nuestros Departamentos
-              </h2>
-              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                Espacios cómodos y modernos, completamente equipados para tu estadía.
-              </p>
-            </div>
-
-            <div className="flex overflow-x-auto whitespace-nowrap gap-6 pb-4 scrollbar-hide">
-              {galleryImages.map((image, index) => (
-                <Card
-                  key={index}
-                  className="flex-shrink-0 w-[calc(100%-24px)] sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(33.33%-16px)] overflow-hidden"
-                >
-                  <div className="relative">
-                    <Image
-                      src={image.src || "/placeholder.svg"}
-                      alt={image.alt}
-                      width={400}
-                      height={300}
-                      className="w-full h-64 object-cover"
-                    />
-                    <Badge className="absolute top-4 left-4">{image.label}</Badge>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Apartment Details Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
           <div className="container px-4 md:px-6">
@@ -242,7 +225,9 @@ export default function DepartamentosPlazaLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">1 cama de dos plazas y 2 camas de 1 plaza.</p>
+                  <p className="text-muted-foreground">
+                    <li>1 cama de dos plazas y 2 camas de una plaza.</li>
+                  </p>
                 </CardContent>
               </Card>
 
@@ -256,7 +241,7 @@ export default function DepartamentosPlazaLanding() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    5 camas de 1 plaza con opción a cama de dos plazas y 3 de 1 plaza.
+                    <li>5 camas de una plaza (opción a 1 cama de dos plazas y 3 de una plaza).</li>
                   </p>
                 </CardContent>
               </Card>
@@ -266,11 +251,14 @@ export default function DepartamentosPlazaLanding() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Bed className="w-6 h-6 text-primary" />
-                    Departamento C
+                    Departamento C (monoambiente)
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">2 camas de 1 plaza.</p>
+                  <p className="text-muted-foreground">
+                   <li>2 camas de una plaza.</li>
+                   <li>Kitchenette con heladera, anafe eléctrico, microondas y pava electrica</li>
+                  </p>
                 </CardContent>
               </Card>
             </div>
