@@ -54,8 +54,8 @@ export default function DepartamentosPlazaLanding() {
           <Image
             src="/images/Logo sin letras sin fondo.png"
             alt="Departamentos Plaza"
-            width={80} // Increased size
-            height={80} // Increased size
+            width={90} 
+            height={90} 
             className="h-16 w-auto" // Adjusted Tailwind classes for visual size
           />
           <div className="flex flex-col">
@@ -118,7 +118,7 @@ export default function DepartamentosPlazaLanding() {
 
       <main className="flex-1">
          {/* Photo Gallery Section */}
-        <section id="galeria" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="galeria" className="w-full py-10 md:py-20 lg:py-30">
           <div className="container px-4 md:px-6">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
@@ -150,7 +150,7 @@ export default function DepartamentosPlazaLanding() {
             </div>
           </div>
         </section>
-        
+
         {/* Hero Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-orange-50 via-background to-amber-50">
           <div className="container px-4 md:px-6">
@@ -224,7 +224,7 @@ export default function DepartamentosPlazaLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">1 cama de dos plazas y 2 camas de 1 plaza.</p>
+                  <p className="text-muted-foreground">1 cama de dos plazas y 2 camas de una plaza.</p>
                 </CardContent>
               </Card>
 
@@ -238,7 +238,7 @@ export default function DepartamentosPlazaLanding() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    5 camas de 1 plaza con opción a cama de dos plazas y 3 de 1 plaza.
+                    5 camas de una plaza (opción a 1 cama de dos plazas y 3 de una plaza).
                   </p>
                 </CardContent>
               </Card>
@@ -252,7 +252,7 @@ export default function DepartamentosPlazaLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">2 camas de 1 plaza.</p>
+                  <p className="text-muted-foreground">2 camas de una plaza.</p>
                 </CardContent>
               </Card>
             </div>
