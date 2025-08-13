@@ -34,6 +34,7 @@ export default function DepartamentosPlazaLanding() {
 
   const galleryImages = [
     { src: "/images/Frente.jpeg", alt: "Fachada del edificio Departamentos Plaza", label: "Frente" },
+    { src: "/images/A-Habitacion.jpg", alt: "Habitación - Departamento A", label: "Dpto A" },
     { src: "/images/A-Comedor.jpg", alt: "Sala de estar y comedor - Departamento A", label: "Dpto A" },
     { src: "/images/A-cocina.jpg", alt: "Comedor y sala de estar - Departamento A", label: "Dpto A" },
     { src: "/images/A-bano.jpg", alt: "Baño completo - Departamento A", label: "Dpto A" },
@@ -224,7 +225,9 @@ export default function DepartamentosPlazaLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">1 cama de dos plazas y 2 camas de una plaza.</p>
+                  <p className="text-muted-foreground">
+                    <li>1 cama de dos plazas y 2 camas de una plaza.</li>
+                  </p>
                 </CardContent>
               </Card>
 
@@ -238,7 +241,7 @@ export default function DepartamentosPlazaLanding() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    5 camas de una plaza (opción a 1 cama de dos plazas y 3 de una plaza).
+                    <li>5 camas de una plaza (opción a 1 cama de dos plazas y 3 de una plaza).</li>
                   </p>
                 </CardContent>
               </Card>
@@ -248,11 +251,14 @@ export default function DepartamentosPlazaLanding() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Bed className="w-6 h-6 text-primary" />
-                    Departamento C
+                    Departamento C (monoambiente)
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">2 camas de una plaza.</p>
+                  <p className="text-muted-foreground">
+                   <li>2 camas de una plaza.</li>
+                   <li>Kitchenette con heladera, anafe eléctrico, microondas y pava electrica</li>
+                  </p>
                 </CardContent>
               </Card>
             </div>
