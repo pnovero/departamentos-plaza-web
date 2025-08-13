@@ -45,25 +45,7 @@ export default function DepartamentosPlazaLanding() {
     { src: "/images/C-bano.jpeg", alt: "Baño completo - Departamento C", label: "Dpto C" },
   ]
 
-  // Custom sort order for labels
-  const labelOrder = {
-    Frente: 1,
-    "Dpto A": 2,
-    "Dpto B": 3,
-    "Dpto C": 4,
-  }
-
-  // Sort images based on the defined order
-  galleryImages.sort((a, b) => {
-    const orderA = labelOrder[a.label as keyof typeof labelOrder] || 99 // Default to high if label not found
-    const orderB = labelOrder[b.label as keyof typeof labelOrder] || 99
-    if (orderA !== orderB) {
-      return orderA - orderB
-    }
-    // If labels are the same, maintain original relative order or sort by src
-    return a.src.localeCompare(b.src)
-  })
-
+  // Main component
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
@@ -135,6 +117,40 @@ export default function DepartamentosPlazaLanding() {
       </header>
 
       <main className="flex-1">
+         {/* Photo Gallery Section */}
+        <section id="galeria" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+                Nuestros Departamentos
+              </h2>
+              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                Espacios cómodos y modernos, completamente equipados para tu estadía.
+              </p>
+            </div>
+
+            <div className="flex overflow-x-auto whitespace-nowrap gap-6 pb-4 scrollbar-hide">
+              {galleryImages.map((image, index) => (
+                <Card
+                  key={index}
+                  className="flex-shrink-0 w-[calc(100%-24px)] sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(33.33%-16px)] overflow-hidden"
+                >
+                  <div className="relative">
+                    <Image
+                      src={image.src || "/placeholder.svg"}
+                      alt={image.alt}
+                      width={400}
+                      height={300}
+                      className="w-full h-64 object-cover"
+                    />
+                    <Badge className="absolute top-4 left-4">{image.label}</Badge>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+        
         {/* Hero Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-orange-50 via-background to-amber-50">
           <div className="container px-4 md:px-6">
@@ -183,40 +199,6 @@ export default function DepartamentosPlazaLanding() {
                   <span className="text-sm">Anfitrión verificado</span>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Photo Gallery Section */}
-        <section id="galeria" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
-                Nuestros Departamentos
-              </h2>
-              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                Espacios cómodos y modernos, completamente equipados para tu estadía.
-              </p>
-            </div>
-
-            <div className="flex overflow-x-auto whitespace-nowrap gap-6 pb-4 scrollbar-hide">
-              {galleryImages.map((image, index) => (
-                <Card
-                  key={index}
-                  className="flex-shrink-0 w-[calc(100%-24px)] sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(33.33%-16px)] overflow-hidden"
-                >
-                  <div className="relative">
-                    <Image
-                      src={image.src || "/placeholder.svg"}
-                      alt={image.alt}
-                      width={400}
-                      height={300}
-                      className="w-full h-64 object-cover"
-                    />
-                    <Badge className="absolute top-4 left-4">{image.label}</Badge>
-                  </div>
-                </Card>
-              ))}
             </div>
           </div>
         </section>
